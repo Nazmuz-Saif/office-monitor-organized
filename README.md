@@ -19,17 +19,17 @@ This project answers exactly that. It simulates 18 devices (2 fans + 3 lights ac
           ▼
 ┌────────────────────┐        REST API (/api/*)
 │   Backend API       │◄──────────────────────────┐
-│  (Express + Socket.io)│                          │
-│  single source of    │                          │
-│  truth for state      │                          │
-└─────────┬───────────┘                          │
+│  (Express + Socket.io)│                         │
+│  single source of   │                           │
+│  truth for state    │                           │
+└─────────┬───────────┘                           │
           │ WebSocket (live push)                 │
-          ▼                                        │
+          ▼                                       │
 ┌────────────────────┐                  ┌──────────────────┐
-│   Web Dashboard      │                  │   Discord Bot      │
-│   (React + Vite)      │                  │  (discord.js +     │
-│   live updates,       │                  │   Groq LLM for      │
-│   manual controls      │                  │   friendly replies) │
+│   Web Dashboard    │                  │   Discord Bot    │
+│   (React + Vite)   │                  │  (discord.js +   │
+│   live updates,    │                  │   Groq LLM for   │
+│   manual controls  │                  │   friendly replies)│
 └────────────────────┘                  └──────────────────┘
 ```
 
