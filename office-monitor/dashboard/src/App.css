@@ -1,0 +1,306 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+  --bg: #0b0e13;
+  --panel: #151a22;
+  --panel-border: #232a35;
+  --amber: #f5a623;
+  --amber-dim: #6b4d1a;
+  --cyan: #4fd1c5;
+  --off: #3a4250;
+  --text: #e8eaed;
+  --text-muted: #7c8798;
+  --danger: #e2543a;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Inter', sans-serif;
+}
+
+.app {
+  min-height: 100vh;
+  padding: 28px 32px 60px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.app-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 28px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--panel-border);
+}
+
+.app-header h1 {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 26px;
+  font-weight: 600;
+  margin: 0;
+  letter-spacing: -0.02em;
+}
+
+.subtitle {
+  margin: 4px 0 0;
+  color: var(--text-muted);
+  font-size: 14px;
+}
+
+.conn-badge {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  padding: 8px 14px;
+  border-radius: 20px;
+  border: 1px solid var(--panel-border);
+  background: var(--panel);
+}
+
+.conn-badge.live { color: var(--amber); }
+.conn-badge.down { color: var(--text-muted); }
+
+.conn-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: currentColor;
+}
+.conn-badge.live .conn-dot {
+  box-shadow: 0 0 8px var(--amber);
+  animation: pulse-dot 1.6s ease-in-out infinite;
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+.app-grid {
+  display: grid;
+  grid-template-columns: 300px 1fr 300px;
+  gap: 20px;
+  align-items: start;
+}
+
+@media (max-width: 1000px) {
+  .app-grid { grid-template-columns: 1fr; }
+}
+
+.col-left, .col-right, .col-center {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.panel {
+  background: var(--panel);
+  border: 1px solid var(--panel-border);
+  border-radius: 10px;
+  padding: 18px 20px 22px;
+}
+
+.panel-title {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+  margin: 0 0 16px;
+  font-weight: 600;
+}
+
+.room-block { margin-bottom: 18px; }
+.room-block:last-child { margin-bottom: 0; }
+
+.room-name {
+  font-size: 13px;
+  font-weight: 600;
+  margin: 0 0 8px;
+  color: var(--text);
+}
+
+.device-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.device-chip {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 10px;
+  border-radius: 6px;
+  background: rgba(255,255,255,0.02);
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 12px;
+}
+
+.device-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.device-chip.on .device-dot {
+  background: var(--amber);
+  box-shadow: 0 0 6px var(--amber);
+}
+.device-chip.off .device-dot { background: var(--off); }
+
+.device-label { flex: 1; color: var(--text); }
+.device-chip.off .device-label { color: var(--text-muted); }
+
+.device-watt { color: var(--text-muted); }
+.device-chip.on .device-watt { color: var(--amber); }
+
+.total-reading {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  margin-bottom: 20px;
+  font-family: 'IBM Plex Mono', monospace;
+}
+
+.total-value {
+  font-size: 44px;
+  font-weight: 700;
+  color: var(--cyan);
+  text-shadow: 0 0 20px rgba(79, 209, 197, 0.35);
+}
+
+.total-unit { font-size: 18px; color: var(--text-muted); }
+
+.room-bars {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.room-bar-row {
+  display: grid;
+  grid-template-columns: 90px 1fr 45px;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+}
+
+.room-bar-label { color: var(--text-muted); }
+
+.room-bar-track {
+  height: 6px;
+  background: rgba(255,255,255,0.06);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.room-bar-fill {
+  height: 100%;
+  background: var(--cyan);
+  border-radius: 4px;
+  transition: width 0.6s ease;
+}
+
+.room-bar-value {
+  font-family: 'IBM Plex Mono', monospace;
+  color: var(--text);
+  text-align: right;
+}
+
+.no-alerts { color: var(--text-muted); font-size: 13px; margin: 0; }
+
+.alert-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.alert-item {
+  display: flex;
+  gap: 10px;
+  padding: 8px 10px;
+  border-left: 2px solid var(--danger);
+  background: rgba(226, 84, 58, 0.08);
+  border-radius: 4px;
+  font-size: 12px;
+}
+
+.alert-time {
+  font-family: 'IBM Plex Mono', monospace;
+  color: var(--danger);
+  flex-shrink: 0;
+}
+
+.alert-message { color: var(--text); }
+
+.floorplan-svg { width: 100%; height: auto; }
+
+.room-box {
+  fill: rgba(255,255,255,0.02);
+  stroke: var(--panel-border);
+  stroke-width: 1;
+}
+
+.room-box-label {
+  fill: var(--text-muted);
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.light-bulb { fill: var(--off); transition: fill 0.4s ease; }
+.light-glow { fill: transparent; transition: fill 0.4s ease; }
+
+.light-on .light-bulb { fill: var(--amber); }
+.light-on .light-glow {
+  fill: var(--amber);
+  opacity: 0.25;
+  animation: glow-pulse 2.4s ease-in-out infinite;
+}
+
+@keyframes glow-pulse {
+  0%, 100% { opacity: 0.15; }
+  50% { opacity: 0.4; }
+}
+
+.fan-housing {
+  fill: none;
+  stroke: var(--off);
+  stroke-width: 1.5;
+  transition: stroke 0.4s ease;
+}
+.fan-on .fan-housing { stroke: var(--cyan); }
+
+.fan-blades ellipse { fill: var(--off); transition: fill 0.4s ease; }
+.fan-on .fan-blades ellipse { fill: var(--cyan); }
+
+.fan-blades { transform-origin: 0 0; }
+.fan-on .fan-blades { animation: spin 1.1s linear infinite; }
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fan-on .fan-blades,
+  .light-on .light-glow,
+  .conn-badge.live .conn-dot {
+    animation: none;
+  }
+}

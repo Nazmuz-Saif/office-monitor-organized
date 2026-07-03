@@ -1,0 +1,16 @@
+{
+  "name": "office-monitor-backend",
+  "version": "1.0.0",
+  "description": "Shared backend (single source of truth) for the Office Power Monitor hackathon project",
+  "type": "module",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node --watch src/server.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "cors": "^2.8.5",
+    "socket.io": "^4.7.5"
+  }
+}

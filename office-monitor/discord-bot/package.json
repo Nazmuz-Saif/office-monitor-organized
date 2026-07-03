@@ -1,0 +1,16 @@
+{
+  "name": "office-monitor-discord-bot",
+  "version": "1.0.0",
+  "description": "Discord bot for the Lights, Fans, Discord hackathon project — reads from the shared backend API",
+  "main": "src/bot.js",
+  "type": "module",
+  "scripts": {
+    "start": "node src/bot.js",
+    "dev": "node --watch src/bot.js"
+  },
+  "dependencies": {
+    "discord.js": "^14.15.3",
+    "dotenv": "^16.4.5",
+    "node-fetch": "^3.3.2"
+  }
+}
