@@ -4,7 +4,9 @@ const ROOM_LABELS = {
   work2: "Work Room 2",
 };
 
-function DeviceChip({ device }) {
+// device chip-এ এখন click করলে toggle হয় (boss manual control) — button হিসেবে রাখা হয়েছে
+// accessibility-র জন্য (keyboard focus/enter দিয়েও কাজ করবে)।
+function DeviceChip({ device, onToggle }) {
   const isOn = device.status === "on";
   const label = device.id
     .split("-")
@@ -13,20 +15,26 @@ function DeviceChip({ device }) {
     .replace(/^\w/, (c) => c.toUpperCase());
 
   return (
-    <div className={`device-chip ${isOn ? "on" : "off"}`}>
+    <button
+      type="button"
+      className={`device-chip ${isOn ? "on" : "off"}`}
+      onClick={() => onToggle(device.id, device.status)}
+      title={`Click to turn ${isOn ? "off" : "on"}`}
+    >
       <span className="device-dot" />
       <span className="device-label">{label}</span>
       <span className="device-watt">{isOn ? `${device.wattage}W` : "—"}</span>
-    </div>
+    </button>
   );
 }
 
-export default function DevicePanel({ devices }) {
+export default function DevicePanel({ devices, onToggleDevice }) {
   const rooms = ["drawing", "work1", "work2"];
 
   return (
     <div className="panel device-panel">
       <h2 className="panel-title">Device Status</h2>
+      <p className="panel-hint">Click any device to turn it on/off</p>
       {rooms.map((room) => {
         const roomDevices = devices.filter((d) => d.room === room);
         return (
@@ -34,7 +42,7 @@ export default function DevicePanel({ devices }) {
             <h3 className="room-name">{ROOM_LABELS[room]}</h3>
             <div className="device-grid">
               {roomDevices.map((d) => (
-                <DeviceChip key={d.id} device={d} />
+                <DeviceChip key={d.id} device={d} onToggle={onToggleDevice} />
               ))}
             </div>
           </div>
