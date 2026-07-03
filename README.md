@@ -176,4 +176,4 @@ _Add links/screenshots to these here once exported from Wokwi/Tinkercad and your
 
 ## License
 
-Built for Techathon Nationals & Rover Summit (IUT Robotics Society), hosted by Okkhor Technology.
+
