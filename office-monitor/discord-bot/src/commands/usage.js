@@ -30,7 +30,7 @@ export async function handleUsage() {
 
   return humanize({
     systemPrompt:
-      "তুমি একটা অফিস power monitoring বটের friendly assistant। শুধু দেওয়া ডেটা থেকে সংক্ষিপ্ত power usage রিপোর্ট দাও, এবং estimated kWh-টা যে approximation তা উল্লেখ করো।",
+      "You are a friendly assistant for an office power monitoring bot. Using only the provided data, generate a concise power usage report. Clearly state that the estimated kWh value is an approximation and should not be treated as an exact measurement. Do not make up or infer any facts beyond the given data.",
     rawData: { totalWatts, perRoomWatts, estimatedKWh, hoursElapsedToday: hoursElapsed.toFixed(1) },
     fallback,
   });

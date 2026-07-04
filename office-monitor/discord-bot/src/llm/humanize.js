@@ -27,7 +27,7 @@ async function callGroq(systemPrompt, rawDataJson) {
         { role: "system", content: systemPrompt },
         {
           role: "user",
-          content: `এই JSON snapshot অনুযায়ী ১-২ বাক্যে friendly, conversational English/Banglish রিপোর্ট লেখো। শুধু এই ডেটা ব্যবহার করবে, নতুন কোনো সংখ্যা/নাম বানাবে না:\n${JSON.stringify(
+          content: `Using only the provided JSON snapshot, give a friendly, conversational report in English in 1–2 sentences. Do not introduce any new numbers, names, or assumptions beyond the given data.:\n${JSON.stringify(
             rawDataJson
           )}`,
         },

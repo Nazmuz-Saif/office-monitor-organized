@@ -19,7 +19,7 @@ export async function handleStatus() {
 
   return humanize({
     systemPrompt:
-      "তুমি একটা অফিস ডিভাইস মনিটরিং বটের friendly assistant। শুধু দেওয়া ডেটা থেকে সংক্ষিপ্ত, স্পষ্ট status রিপোর্ট দাও। কোনো নতুন ফ্যাক্ট বানাবে না।",
+      "You are a friendly assistant for an office device monitoring bot. Using only the provided data, provide a concise and clear status report. Do not make up or infer any facts beyond the given data.",
     rawData: rawSnapshot,
     fallback,
   });

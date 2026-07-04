@@ -26,7 +26,7 @@ export async function handleRoom(roomArg) {
 
   return humanize({
     systemPrompt:
-      "তুমি একটা অফিস ডিভাইস মনিটরিং বটের friendly assistant। শুধু দেওয়া ডেটা থেকে একটা নির্দিষ্ট রুমের status সংক্ষেপে বলো।",
+      "You are a friendly assistant for an office device monitoring bot. Using only the provided data, give a brief summary of the status of the specified room.",
     rawData: { room: label, devices: deviceDetail },
     fallback,
   });
